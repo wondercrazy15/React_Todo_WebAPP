@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import DataTable from "react-data-table-component";
+import { default as usersolid } from "../Components/Asset/Images/user-solid.svg";
 
 export default function UserList() {
   const [userlist, setUserlist] = useState([]);
@@ -12,31 +13,43 @@ export default function UserList() {
 
   const columns = [
     {
-      name: "Name",
+      name: <h5>Profile</h5>,
+      selector: (row) => row.UploadImage,
+      cell: (row) =>
+        row.UploadImage ? (
+          <img
+            height="84px"
+            width="56px"
+            alt={row.name}
+            src={row.UploadImage}
+          />
+        ) : (
+          <img height="84px" width="56px" alt={row.name} src={usersolid} />
+        ),
+    },
+    {
+      name: <h5>Name</h5>,
       selector: (row) => row.Name,
     },
     {
-      name: "Email",
+      name: <h5>Email</h5>,
       selector: (row) => row.Email,
     },
     {
-      name: "Address",
+      name: <h5>Address</h5>,
       selector: (row) => row.Address,
     },
+
     {
-      name: "Name",
-      selector: (row) => row.Name,
-    },
-    {
-      name: "Mobile",
+      name: <h5>Mobile</h5>,
       selector: (row) => row.Mobile,
     },
     {
-      name: "AlternetMobile",
+      name: <h5>AlternetMobile</h5>,
       selector: (row) => row.AlternetMobile,
     },
     {
-      name: "Aadhaar",
+      name: <h5>Aadhaar</h5>,
       selector: (row) => row.Aadhaar,
     },
   ];
@@ -45,10 +58,10 @@ export default function UserList() {
     <>
       <div className="countiner p-3">
         <div className="row justify-content-center ">
-          <h5 className="text-center ">
+          <h2 className="text-center ">
             <b>User List </b>
-          </h5>
-          {/* <table class="table shadow text-center">
+          </h2>
+          {/*           <table class="table shadow text-center">
             <thead class="thead-dark">
               <tr> */}
           {/* <th scope="col">UserID</th> */}
@@ -75,9 +88,24 @@ export default function UserList() {
           {/* ); })} */}
           {/* </tbody>
           </table> */}
-          <DataTable columns={columns} data={userlist} />
-          {console.log("Userlist :" + userlist)}
+          <DataTable
+            columns={columns}
+            data={userlist}
+            pagination
+            defaultSortFieldId={2}
+          />
         </div>
+
+        {/* <div className="form-group">
+          <label htmlFor=""> User List </label>
+          <select className="form-control col-2">
+            {userlist.map((data) => (
+              <option key={data.Name} value={data.Uid}>
+                {data.Name}
+              </option>
+            ))}
+          </select>
+        </div> */}
       </div>
     </>
   );

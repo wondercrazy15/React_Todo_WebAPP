@@ -9,32 +9,45 @@ import Home from "./Components/Home/Home";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
 import UserList from "./Components/UserList";
-import { db, auth } from "./firebase";
-import { useEffect, useState } from "react/cjs/react.development";
+import { ToastContainer } from "react-toastify";
+import Profile from "./Components/User/Profile";
+import { RentHome } from "./Components/Rent/RentHome";
+import AddProduct from "./Components/Product/AddProduct";
+import ProductList from "./Components/Product/ProductList";
+import ShopProduct from "./Components/Product/ShopProduct";
 
 function App() {
-  const [user, setUser] = useState();
-  const userx = auth.currentUser;
-  useEffect(() => {
-    if (userx) {
-      setUser(userx);
-    }
-  }, [userx]);
-  console.log("auth :" + auth);
   return (
     <>
-      <Header title="Todo List" />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
+      <Header title="Todo List" />
       <Switch>
         <Route path="/todo" exact component={HomeTodo} />
         <Route path="/about" component={About} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/userlist" component={UserList} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/rent" component={RentHome} />
+        <Route path="/addproduct" component={AddProduct} />
+        <Route path="/productlist" component={ProductList} />
+        <Route path="/shopcart" component={ShopProduct} />
         <Route path="/" component={Home} />
       </Switch>
-
       <Footer />
+
+      <ToastContainer />
     </>
   );
 }

@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import team1 from "../Asset/Images/team-1.jpg";
 import team2 from "../Asset/Images/team-2.jpg";
 import team3 from "../Asset/Images/team-3.jpg";
+import { useAuth } from "../Contexts/AuthContext";
+import { useHistory } from "react-router-dom";
+import { useState } from "react/cjs/react.development";
+import { toast } from "react-toastify";
 
 function Home() {
+  const history = useHistory();
+  const { currentUser } = useAuth();
+  const [emailverify, setemailverify] = useState();
+
+  // useEffect(() => {}, []);
+
+  // if (currentUser != null) {
+  //   setemailverify(currentUser.emailVerified);
+  // }
+
+  // console.log("Home CurrentUser : " + JSON.stringify(currentUser));
+  //console.log(" User  emailverify:" + emailverify);
+
   return (
     <>
+      {/* {!emailverify
+        ? toast.info("Please Verify your Email address on Email")
+        : null} */}
       <div>
         <section
           id="hero"
@@ -20,12 +40,19 @@ function Home() {
             <div className="row justify-content-center">
               <div
                 className="col-md-6 p-5"
-                // style={{
-                //   background: "rgb(21 55 75 / 80%)",
-                // }}
+                style={{
+                  background: "rgb(21 55 75 / 80%)",
+                }}
               >
-                <h1>Welcome </h1>
-                <h2>What We Believe</h2>
+                <h1>Welcome {currentUser && currentUser.email} </h1>
+                <h2 className="text-danger">
+                  {currentUser &&
+                    currentUser.emailVerified == false &&
+                    " Please verifiy your Email"}
+                </h2>
+
+                <h2>What We Believe In Success</h2>
+
                 <a href="/" className="btn btn-success mt-3">
                   Get Started
                 </a>
