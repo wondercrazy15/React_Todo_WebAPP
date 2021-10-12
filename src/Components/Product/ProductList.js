@@ -75,49 +75,59 @@ export default function ProductList() {
             {ProductList.map((data) => {
               return (
                 <>
-                  <div className="card" key={data.id}>
-                    <div className="card-header">Header</div>
-                    {data.product.UploadImage ? (
-                      <img
-                        src={data.product.UploadImage}
-                        className="card-img-top"
-                        alt={data.Name}
-                        width="20px"
-                        height="150px"
-                      />
-                    ) : (
-                      <img
-                        src={usersolid}
-                        className="card-img-top"
-                        alt={data.product.Name}
-                        width="20px"
-                        height="150px"
-                      />
-                    )}
-                    <div className="card-body">
-                      <h5 className="card-title">{data.product.Name}</h5>
-                      <p className="card-text">{data.product.Description}</p>
-                    </div>
-                    <div className="card-footer">
-                      <div className="">
-                        <h6>
-                          <b>
-                            <i class="fas fa-rupee-sign"></i>
-                            {data.product.Price}
-                          </b>
-                        </h6>
-                        <h6>
-                          <b> In stock : {data.product.Quantity}</b>
-                        </h6>
-                        <button
-                          type="button"
-                          class="btn btn-primary btn-sm"
-                          disabled={data.product.Quantity == 0 ? true : false}
-                          onClick={() => AddNewProduct(data.id)}
-                        >
-                          <i class="fas fa-cart-plus"></i>
-                        </button>
-                        {/* <p>{data.id}</p> */}
+                  <div className="col-md-4 mt-5">
+                    <div className="card" key={data.id}>
+                      <div className="card-header">Header</div>
+                      {data.product.UploadImage ? (
+                        <img
+                          src={data.product.UploadImage}
+                          className="card-img-top"
+                          alt={data.Name}
+                          width="20px"
+                          height="150px"
+                        />
+                      ) : (
+                        <img
+                          src={usersolid}
+                          className="card-img-top"
+                          alt={data.product.Name}
+                          width="20px"
+                          height="150px"
+                        />
+                      )}
+                      <div className="card-body">
+                        <h5 className="card-title">{data.product.Name}</h5>
+                        <p className="card-text">{data.product.Description}</p>
+                      </div>
+                      <div className="card-footer">
+                        <div className="">
+                          <h6>
+                            <b>
+                              <i class="fas fa-rupee-sign"></i>
+                              {data.product.Price}
+                            </b>
+                          </h6>
+                          <h6>
+                            <b> In stock : {data.product.Quantity}</b>
+                          </h6>
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-sm"
+                            disabled={data.product.Quantity == 0 ? true : false}
+                            onClick={() => AddNewProduct(data.id)}
+                          >
+                            <i class="fas fa-cart-plus"></i>
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-danger btn-sm ml-1 mr-1"
+                            onClick={() =>
+                              db.collection("products").doc(data.id).delete()
+                            }
+                          >
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
