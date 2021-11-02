@@ -30,6 +30,7 @@ export default function UserList() {
     {
       name: <h5>Name</h5>,
       selector: (row) => row.Name,
+      sortable: true,
     },
     {
       name: <h5>Email</h5>,
@@ -92,7 +93,7 @@ export default function UserList() {
             columns={columns}
             data={userlist}
             pagination
-            defaultSortFieldId={2}
+            //defaultSortFieldId={2}
           />
         </div>
 

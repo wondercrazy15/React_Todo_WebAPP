@@ -75,7 +75,7 @@ export default function ProductList() {
             {ProductList.map((data) => {
               return (
                 <>
-                  <div className="col-md-4 mt-5">
+                  <div className="col-md-4 mt-4">
                     <div className="card" key={data.id}>
                       <div className="card-header">Header</div>
                       {data.product.UploadImage ? (
@@ -99,20 +99,20 @@ export default function ProductList() {
                         <h5 className="card-title">{data.product.Name}</h5>
                         <p className="card-text">{data.product.Description}</p>
                       </div>
-                      <div className="card-footer">
-                        <div className="">
-                          <h6>
-                            <b>
-                              <i class="fas fa-rupee-sign"></i>
-                              {data.product.Price}
-                            </b>
-                          </h6>
-                          <h6>
-                            <b> In stock : {data.product.Quantity}</b>
-                          </h6>
+                      <div className="card-footer d-flex justify-content-around">
+                        <h6>
+                          <b>
+                            <i class="fas fa-rupee-sign"></i>
+                            {data.product.Price}
+                          </b>
+                        </h6>
+                        <h6>
+                          <b> In stock : {data.product.Quantity}</b>
+                        </h6>
+                        <div className="d-flex align-items-center justify-content-between">
                           <button
                             type="button"
-                            class="btn btn-primary btn-sm"
+                            class="btn btn-primary btn-sm "
                             disabled={data.product.Quantity == 0 ? true : false}
                             onClick={() => AddNewProduct(data.id)}
                           >
@@ -120,7 +120,7 @@ export default function ProductList() {
                           </button>
                           <button
                             type="button"
-                            class="btn btn-danger btn-sm ml-1 mr-1"
+                            class="btn btn-danger btn-sm ml-2"
                             onClick={() =>
                               db.collection("products").doc(data.id).delete()
                             }
