@@ -35,6 +35,7 @@ export default function UserList() {
     {
       name: <h5>Email</h5>,
       selector: (row) => row.Email,
+      sortable: true,
     },
     {
       name: <h5>Address</h5>,
