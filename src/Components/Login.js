@@ -26,7 +26,8 @@ export default function Login() {
         .then((userCredential) => {
           // Signed in
           if (userCredential) {
-            if (currentUser && currentUser.emailverified == false) {
+            debugger
+            if (userCredential.user.emailVerified == false) {
               sendEmailVerification(auth.currentUser);
             }
             toast.success("User Login Successfully");

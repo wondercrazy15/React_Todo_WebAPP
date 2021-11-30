@@ -15,6 +15,7 @@ import { RentHome } from "./Components/Rent/RentHome";
 import AddProduct from "./Components/Product/AddProduct";
 import ProductList from "./Components/Product/ProductList";
 import ShopProduct from "./Components/Product/ShopProduct";
+import Travell_rent from "./Components/Travelling_rent/Travell_rent";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="/addproduct" component={AddProduct} />
         <Route path="/productlist" component={ProductList} />
         <Route path="/shopcart" component={ShopProduct} />
+        <Route path="/Travell_rent" component={Travell_rent} />
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
